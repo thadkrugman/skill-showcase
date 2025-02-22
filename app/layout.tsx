@@ -1,13 +1,10 @@
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
+import { ThemeProvider } from "@/components/shared/ThemeProvider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/shared/Header";
+import Footer from "@/components/shared/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,16 +30,18 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} flex flex-col w-full min-h-screen bg-background`}
+          className={`${geistSans.variable} ${geistMono.variable} flex flex-col w-full min-h-screen`}
         >
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-          <div className="flex flex-col w-full h-full flex-1">{children}</div>
-          <footer className="py-6 w-full">My Footer</footer>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+            <div className="flex flex-col w-full h-full flex-1">{children}</div>
+            <Footer />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
