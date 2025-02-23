@@ -7,8 +7,11 @@ export default function Header() {
   const navItems = [{ title: "Home", path: "/" }];
 
   return (
-    <header className="flex h-14 border-b border-dashed">
-      <Container className="py-0 xl:py-0 flex-row items-center justify-between">
+    <header className="flex sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <Container
+        className="py-0 md:py-0 lg:py-0 flex-row items-center justify-between h-14"
+        borderBottom
+      >
         <div className="flex flex-row items-center h-full">
           <Link href={"/"} className="text-base font-bold mr-6">
             SkillShowcase

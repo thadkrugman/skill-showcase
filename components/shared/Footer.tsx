@@ -18,26 +18,27 @@ const navigation = [
 
 export default function Footer() {
   return (
-    <footer className="flex h-14 border-t border-dashed">
-      <Container className="py-0 xl:py-0 items-center">
-        <div className="mx-auto flex items-center justify-between w-full h-full">
-          <p className="text-center text-sm leading-loose text-muted-foreground">
-            &copy; 2024 Thad Krugman.
-          </p>
-          <div className="flex justify-center gap-x-6">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                className="text-muted-foreground hover:opacity-80"
-              >
-                <span className="sr-only">{item.name}</span>
-                <item.icon aria-hidden="true" className="size-6" />
-              </a>
-            ))}
-          </div>
+    <footer className="flex h-14">
+      <Container
+        className="py-0 md:py-0 lg:py-0 flex-row items-center justify-between"
+        borderTop
+      >
+        <p className="text-center text-sm leading-loose text-muted-foreground">
+          &copy; 2024 Thad Krugman.
+        </p>
+        <div className="flex justify-center gap-x-6">
+          {navigation.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+              className="text-muted-foreground hover:opacity-80"
+            >
+              <span className="sr-only">{item.name}</span>
+              <item.icon aria-hidden="true" className="size-6" />
+            </a>
+          ))}
         </div>
       </Container>
     </footer>
