@@ -1,4 +1,4 @@
-import Container from "@/components/shared/Container";
+import Container from "./Container";
 
 const navigation = [
   {
@@ -18,29 +18,28 @@ const navigation = [
 
 export default function Footer() {
   return (
-    <footer className="flex h-14">
-      <Container
-        className="py-0 md:py-0 lg:py-0 flex-row items-center justify-between"
-        borderTop
-      >
-        <p className="text-center text-sm leading-loose text-muted-foreground">
-          &copy; 2024 Thad Krugman.
-        </p>
-        <div className="flex justify-center gap-x-6">
-          {navigation.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              target="_blank"
-              rel="noreferrer"
-              className="text-muted-foreground hover:opacity-80"
-            >
-              <span className="sr-only">{item.name}</span>
-              <item.icon aria-hidden="true" className="size-6" />
-            </a>
-          ))}
-        </div>
-      </Container>
-    </footer>
+    <Container
+      tag="footer"
+      borderTop={true}
+      className="flex h-14 flex-row items-center justify-between py-0"
+    >
+      <p className="text-muted-foreground text-center text-sm leading-loose">
+        &copy; 2024 Thad Krugman.
+      </p>
+      <div className="flex justify-center gap-x-6">
+        {navigation.map((item) => (
+          <a
+            key={item.name}
+            href={item.href}
+            target="_blank"
+            rel="noreferrer"
+            className="text-muted-foreground hover:opacity-80"
+          >
+            <span className="sr-only">{item.name}</span>
+            <item.icon aria-hidden="true" className="size-6" />
+          </a>
+        ))}
+      </div>
+    </Container>
   );
 }

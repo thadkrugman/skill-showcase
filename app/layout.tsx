@@ -35,9 +35,9 @@ export default function RootLayout({
         },
       }}
     >
-      <html lang="en">
+      <html lang="en" suppressContentEditableWarning>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} flex flex-col w-full min-h-screen`}
+          className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen w-full flex-col`}
         >
           <ThemeProvider
             attribute="class"
@@ -46,7 +46,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Header />
-            <div className="flex flex-col w-full h-full flex-1">{children}</div>
+            <div className="flex h-full w-full flex-1 flex-col">{children}</div>
             <Footer />
           </ThemeProvider>
         </body>

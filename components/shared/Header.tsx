@@ -1,43 +1,48 @@
 import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/nextjs";
-import ModeToggle from "./ModeToggle";
-import Container from "@/components/shared/Container";
+import { auth } from "@clerk/nextjs/server";
+import ModeToggle from "@/components/shared/ModeToggle";
 import Link from "next/link";
+import Container from "@/components/shared/Container";
+import { Button } from "../ui/button";
 
-export default function Header() {
+export default async function Header() {
+  const { userId } = await auth();
   const navItems = [{ title: "Home", path: "/" }];
+  const homeLink = userId ? "/app" : "/";
 
   return (
-    <header className="flex sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <Container
-        className="py-0 md:py-0 lg:py-0 flex-row items-center justify-between h-14"
-        borderBottom
-      >
-        <div className="flex flex-row items-center h-full">
-          <Link href={"/"} className="text-base font-bold mr-6">
-            SkillShowcase
-          </Link>
-          <SignedIn>
-            <nav>
-              <ul className="flex flex-row items-center gap-6 text-sm text-foreground/80">
-                {navItems.map((item, idx) => (
-                  <Link key={idx} href={item.path}>
-                    {item.title}
-                  </Link>
-                ))}
-              </ul>
-            </nav>
-          </SignedIn>
-        </div>
-        <div className="flex flex-row items-center gap-4">
-          <ModeToggle />
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-          <SignedOut>
+    <Container
+      tag="header"
+      borderBottom={true}
+      className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 flex h-14 w-full flex-row items-center justify-between py-0 backdrop-blur"
+    >
+      <div className="flex h-full flex-row items-center">
+        <Link href={homeLink} className="mr-6 text-base font-bold">
+          SkillShowcase
+        </Link>
+        <SignedIn>
+          <nav>
+            <ul className="text-foreground/80 flex flex-row items-center gap-6 text-sm">
+              {navItems.map((item, idx) => (
+                <Link key={idx} href={item.path}>
+                  {item.title}
+                </Link>
+              ))}
+            </ul>
+          </nav>
+        </SignedIn>
+      </div>
+      <div className="flex flex-row items-center gap-4">
+        <ModeToggle />
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+        <SignedOut>
+          <Button variant="outline" size="sm" className="text-xs" asChild>
             <SignInButton />
-          </SignedOut>
-        </div>
-      </Container>
-    </header>
+          </Button>
+        </SignedOut>
+      </div>
+    </Container>
   );
 }

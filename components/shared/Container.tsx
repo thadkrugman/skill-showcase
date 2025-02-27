@@ -1,33 +1,41 @@
-import { ReactNode } from "react";
+import { ReactNode, ElementType } from "react";
 import { cn } from "@/lib/utils";
 
 interface Props {
+  children: ReactNode;
+  tag?: "div" | "section" | "article" | "header" | "footer";
   className?: string;
   borderTop?: boolean;
   borderBottom?: boolean;
   flex1?: boolean;
-  children: ReactNode;
 }
 
 export default function Container({
   children,
+  tag = "div",
+  className,
   borderTop = false,
   borderBottom = false,
   flex1 = false,
-  className,
 }: Props) {
+  const Tag = tag as ElementType;
+
   return (
-    <div
-      className={`${borderTop && "border-t"} ${borderBottom && "border-b"} ${flex1 && "flex-1"} flex flex-col items-center w-full border-dashed`}
+    <Tag
+      className={`${borderTop && "border-t"} ${borderBottom && "border-b"} ${flex1 && "flex-1"} flex w-full flex-col items-center border-dashed`}
     >
       <div
-        className={cn(
-          `${flex1 && "flex-1"} max-w-screen-2xl w-full h-full flex flex-col px-4 xl:px-6 py-8 md:py-10 lg:py-12 min-[1535px]:border-x border-dashed`,
-          className,
-        )}
+        className={`${flex1 && "flex-1"} flex h-full w-full flex-col items-center px-2`}
       >
-        {children}
+        <div
+          className={cn(
+            `${flex1 && "flex-1"} flex h-full w-full max-w-screen-2xl flex-col border-dashed px-4 py-6 md:border-x xl:px-6`,
+            className,
+          )}
+        >
+          {children}
+        </div>
       </div>
-    </div>
+    </Tag>
   );
 }

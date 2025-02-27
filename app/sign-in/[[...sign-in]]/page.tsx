@@ -1,28 +1,29 @@
 "use client";
 
+import Container from "@/components/shared/Container";
 import * as Clerk from "@clerk/elements/common";
 import * as SignIn from "@clerk/elements/sign-in";
 
 export default function SignInPage() {
   return (
-    <div className="flex-1 flex items-center justify-center px-4">
+    <Container flex1={true}>
       <SignIn.Root>
         <SignIn.Step
           name="start"
-          className="flex-1 items-center justify-center h-full flex"
+          className="flex h-full flex-1 items-center justify-center"
         >
-          <div className="flex flex-col w-full max-w-sm items-center justify-center gap-6">
+          <div className="flex w-full max-w-sm flex-col items-center justify-center gap-6">
             <div className="flex flex-col gap-1.5 text-center">
-              <h1 className="font-semibold tracking-tight text-2xl">
+              <h1 className="text-2xl font-semibold tracking-tight">
                 Skill Showcase
               </h1>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-muted-foreground text-sm">
                 Login or signup with your Google account
               </p>
             </div>
             <Clerk.Connection
               name="google"
-              className="w-full flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground px-4 py-4"
+              className="ring-offset-background focus-visible:ring-ring border-input bg-background hover:bg-accent hover:text-accent-foreground flex w-full items-center justify-center gap-2 rounded-md border px-4 py-4 text-base font-medium whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"
             >
               <Clerk.Icon className="size-5" />
               Login with Google
@@ -30,6 +31,6 @@ export default function SignInPage() {
           </div>
         </SignIn.Step>
       </SignIn.Root>
-    </div>
+    </Container>
   );
 }
