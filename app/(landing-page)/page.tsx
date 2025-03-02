@@ -1,5 +1,7 @@
 import PageTitle from "@/components/shared/PageTitle";
 import Container from "@/components/shared/Container";
+import TabNavigation from "./components/TabNavigation";
+import TabContent from "./components/TabContent";
 
 export default function Home() {
   return (
@@ -12,16 +14,21 @@ export default function Home() {
         secondaryButtonText="Learn More"
         secondaryButtonLink="/#features"
       />
-      <Container
-        className="h-14 flex-row items-center gap-6"
-        borderBottom={true}
-      >
-        <button className="class=flex text-muted-foreground hover:text-primary data-[active=true]:bg-muted data-[active=true]:text-primary h-7 items-center justify-center rounded-full px-4 text-center text-sm font-medium transition-colors">
-          Test
-        </button>
+      <TabNavigation />
+      <Container borderBottom={true}>
+        <TabContent />
       </Container>
-      <Container flex1={true}>
-        <div className="bg-muted aspect-video w-full rounded-lg"></div>
+      <Container flex1={true} className="">
+        <h2 className="text-3xl font-bold tracking-tight">Features</h2>
+        <p className="text-muted-foreground mt-1 text-base font-light">
+          Some text about the features of the app.
+        </p>
+        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <div className="h-48 w-full rounded-lg border"></div>
+          <div className="h-48 w-full rounded-lg border"></div>
+          <div className="h-48 w-full rounded-lg border"></div>
+          <div className="h-48 w-full rounded-lg border"></div>
+        </div>
       </Container>
     </>
   );

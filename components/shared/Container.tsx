@@ -2,7 +2,7 @@ import { ReactNode, ElementType } from "react";
 import { cn } from "@/lib/utils";
 
 interface Props {
-  children: ReactNode;
+  children?: ReactNode;
   tag?: "div" | "section" | "article" | "header" | "footer";
   className?: string;
   borderTop?: boolean;
@@ -33,7 +33,7 @@ export default function Container({
             className,
           )}
         >
-          {children}
+          {children || null}
         </div>
       </div>
     </Tag>

@@ -1,5 +1,6 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -35,7 +36,7 @@ export default function RootLayout({
         },
       }}
     >
-      <html lang="en" suppressContentEditableWarning>
+      <html lang="en" suppressHydrationWarning>
         <body
           className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen w-full flex-col`}
         >
@@ -46,7 +47,9 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Header />
-            <div className="flex h-full w-full flex-1 flex-col">{children}</div>
+            <div className="flex h-full w-full flex-1 flex-col">
+              <NuqsAdapter>{children}</NuqsAdapter>
+            </div>
             <Footer />
           </ThemeProvider>
         </body>
