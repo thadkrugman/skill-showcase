@@ -1,5 +1,5 @@
-import PageTitle from "@/components/shared/PageTitle";
-import Container from "@/components/shared/Container";
+import PageTitle from "@/components/shared/page-title";
+import Container from "@/components/shared/container";
 import TabNavigation from "./components/TabNavigation";
 import TabContent from "./components/TabContent";
 

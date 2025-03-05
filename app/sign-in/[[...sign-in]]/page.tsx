@@ -1,6 +1,6 @@
 "use client";
 
-import Container from "@/components/shared/Container";
+import Container from "@/components/shared/container";
 import * as Clerk from "@clerk/elements/common";
 import * as SignIn from "@clerk/elements/sign-in";
 

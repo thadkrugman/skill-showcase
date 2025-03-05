@@ -1,13 +1,19 @@
 import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
-import ModeToggle from "@/components/shared/ModeToggle";
+import ModeToggle from "@/components/shared/mode-toggle";
 import Link from "next/link";
-import Container from "@/components/shared/Container";
+import Container from "@/components/shared/container";
 import { Button } from "../ui/button";
 
 export default async function Header() {
   const { userId } = await auth();
-  const navItems = [{ title: "Home", path: "/" }];
+  const navItems = [
+    { title: "Dashboard", path: "/app" },
+    { title: "Total Balance", path: "/app/total-balance" },
+    { title: "Income Tracker", path: "/app/income-tracker" },
+    { title: "Monthly Spending", path: "/app/monthly-spending" },
+    { title: "Savings Progress", path: "/app/savings-progress" },
+  ];
   const homeLink = userId ? "/app" : "/";
 
   return (

@@ -1,19 +1,14 @@
 import { ClerkProvider } from "@clerk/nextjs";
-import { ThemeProvider } from "@/components/shared/ThemeProvider";
+import { ThemeProvider } from "@/components/shared/theme-provider";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Header from "@/components/shared/Header";
-import Footer from "@/components/shared/Footer";
+import { Geist } from "next/font/google";
+import "@/app/globals.css";
+import Header from "@/components/shared/header";
+import Footer from "@/components/shared/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
@@ -38,7 +33,7 @@ export default function RootLayout({
     >
       <html lang="en" suppressHydrationWarning>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen w-full flex-col`}
+          className={`${geistSans.variable} flex min-h-screen w-full flex-col font-sans`}
         >
           <ThemeProvider
             attribute="class"

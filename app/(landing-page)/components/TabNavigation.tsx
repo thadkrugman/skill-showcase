@@ -3,7 +3,7 @@
 import { useQueryState } from "nuqs";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import Container from "@/components/shared/Container";
+import Container from "@/components/shared/container";
 
 const tabs = [
   { id: "dashboard", label: "Dashboard" },

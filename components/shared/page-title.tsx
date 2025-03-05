@@ -1,5 +1,5 @@
 import { Button } from "../ui/button";
-import Container from "./Container";
+import Container from "./container";
 import Link from "next/link";
 interface Props {
   title: string;

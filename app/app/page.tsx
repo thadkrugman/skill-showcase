@@ -1,6 +1,6 @@
-import PageTitle from "@/components/shared/PageTitle";
-import Container from "@/components/shared/Container";
-import TotalBalance from "@/app/app/components/TotalBalance";
+import PageTitle from "@/components/shared/page-title";
+import Container from "@/components/shared/container";
+import TotalBalance from "@/app/app/components/total-balance";
 
 export default function Home() {
   return (
